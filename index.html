@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>RJAH - impactOS Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css?v=1793015776">
+    <link rel="stylesheet" href="styles/components.css?v=1793015776">
+    <link rel="stylesheet" href="styles/animations.css?v=1793015776">
+    <link rel="stylesheet" href="styles/heat.css?v=1793015776">
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+</head>
+
+<body>
+    <svg class="screen-corner top-left" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 0,0 L 0,96 Q 0,0 96,0 L 0,0 Z" fill="black"/>
+    </svg>
+    <svg class="screen-corner top-right" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 96,0 L 96,96 Q 96,0 0,0 L 96,0 Z" fill="black"/>
+    </svg>
+    <svg class="screen-corner bottom-left" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 0,96 L 0,0 Q 0,96 96,96 L 0,96 Z" fill="black"/>
+    </svg>
+    <svg class="screen-corner bottom-right" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 96,96 L 96,0 Q 96,96 0,96 L 96,96 Z" fill="black"/>
+    </svg>
+
+    <div class="cycle-glow" id="cycleRing">
+        <div class="cycle-glow-inner"></div>
+    </div>
+
+    <div class="app" id="app">
+        <div class="dashboard-column">
+            <nav class="navbar" role="navigation" aria-label="Main navigation">
+                <div class="nav-greeting">
+                    <div id="greeting" class="greeting">
+                        Good morning,<br><span class="greeting-name">RJAH</span>
+                    </div>
+                </div>
+
+                <div class="nav-brand">
+                    <div class="brand" id="brandTap" role="button" aria-label="Show more information" tabindex="0">
+                        <img
+                            src="./static/impactOS Logo.png"
+                            alt="impactOS"
+                            class="brand-logo"
+                        >
+                    </div>
+                </div>
+
+                <div class="nav-actions">
+                    <div class="location-info">
+                        <span class="location-label">Location</span>
+                        <span class="location-title">Gobowen</span>
+                    </div>
+                    <div class="nav-datetime">
+                        <time id="navTime" class="nav-time">00:00</time>
+                        <time id="navDate" class="nav-date">Monday, 1 Jan</time>
+                    </div>
+                </div>
+            </nav>
+
+            <main class="main" role="main">
+                <div class="container">
+                    <div class="main-layout">
+                        <aside class="device-section" aria-label="Device information">
+                            <div class="product-showcase" id="productShowcase">
+                                <div class="product-image-container">
+                                    <img
+                                        src="./static/Render Freestanding.png"
+                                        alt="instarinse® machine"
+                                        class="product-image"
+                                        width="336"
+                                        loading="eager"
+                                    >
+                                </div>
+                                <div class="instarinse-logo-container">
+                                    <img src="./static/inline instarinse (r).png" alt="instarinse®" class="instarinse-logo">
+                                </div>
+                            </div>
+
+                            <div class="product-status-overlay" id="productStatusOverlay" aria-live="polite">
+                                <div class="device-stats">
+                                    <div class="device-stat-item">
+                                        <span class="device-stat-label">Install date:</span>
+                                        <span class="device-stat-value">26th October 2026</span>
+                                    </div>
+                                    <div class="device-stat-item">
+                                        <span class="device-stat-label">Energy per cycle:</span>
+                                        <span class="device-stat-value">0.009kWh</span>
+                                    </div>
+                                    <div class="device-stat-item">
+                                        <span class="device-stat-label">Water per cycle:</span>
+                                        <span class="device-stat-value">50ml</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+
+                        <section class="metrics-section" aria-label="Impact metrics">
+                            <header class="metrics-header">
+                                <h1>impactOS<sup>™</sup></h1>
+                                <p>
+                                    Designed and built in Chippenham UK, instarinse® delivers hygienic,
+                                    ultra-efficient reusable cleaning.
+                                </p>
+                            </header>
+
+                            <div class="hero-section">
+                                <div class="hero-loading" id="heroLoading">
+                                    <div class="loading-spinner"></div>
+                                    <span class="loading-text">Connecting to device...</span>
+                                </div>
+                                <div class="hero-counter" id="heroCounter" style="display: none;">
+                                    <span class="hero-label">Disposable cups <span class="hero-label-accent">saved</span></span>
+                                    <div class="hero-value-container">
+                                        <div class="hero-value" id="metricCups">0</div>
+                                        <div class="plus-one-badge" id="plusOneBadge">+1</div>
+                                    </div>
+                                    <span class="hero-since">since 26th October 2026</span>
+                                </div>
+                                <div class="hero-bridge">
+                                    <h2 class="hero-title">Our Road to<br>100</h2>
+                                </div>
+                                <div class="hero-milestone">
+                                    <div class="milestone-ring-container">
+                                        <svg class="milestone-ring" viewBox="0 0 120 120">
+                                            <defs>
+                                                <linearGradient id="ringGradient" gradientUnits="userSpaceOnUse" x1="60" y1="8" x2="60" y2="112">
+                                                    <stop offset="0%" style="stop-color:#007aff" />
+                                                    <stop offset="100%" style="stop-color:#34c759" />
+                                                </linearGradient>
+                                            </defs>
+                                            <circle class="ring-bg" cx="60" cy="60" r="52" />
+                                            <circle class="ring-progress" id="milestoneRing" cx="60" cy="60" r="52" stroke="url(#ringGradient)" />
+                                        </svg>
+                                        <div class="milestone-text">
+                                            <span class="milestone-percent" id="milestonePercent">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comparison-grid">
+                                <article class="metric-card alternating" data-metric="water-savings">
+                                    <div class="comparison-vs">Water Saving<br><span id="waterComparison">vs Handwash</span></div>
+                                    <div class="metric-value-wrapper">
+                                        <div class="metric-value" id="metricWaterSavings">
+                                            0<small class="metric-unit">L</small>
+                                        </div>
+                                    </div>
+                                    <div class="percent-label">(<span id="waterSavingsPercent">95%</span> less)</div>
+                                    <div class="card-equivalent">
+                                        <span class="equiv-equals">=</span>
+                                        <span class="equiv-icon">🌱</span>
+                                        <span class="equiv-value" id="equivBathtubs">0</span>
+                                        <span class="equiv-label">days of watering your garden</span>
+                                    </div>
+                                </article>
+
+                                <article class="metric-card alternating" data-metric="energy-savings">
+                                    <div class="comparison-vs">Energy Saving<br><span id="energyComparison">vs Handwash</span></div>
+                                    <div class="metric-value-wrapper">
+                                        <div class="metric-value" id="metricEnergySavings">
+                                            0<small class="metric-unit">kWh</small>
+                                        </div>
+                                    </div>
+                                    <div class="percent-label">(<span id="energySavingsPercent">89%</span> less)</div>
+                                    <div class="card-equivalent">
+                                        <span class="equiv-equals">=</span>
+                                        <span class="equiv-icon">📱</span>
+                                        <span class="equiv-value" id="equivPhones">0</span>
+                                        <span class="equiv-label">phone charges</span>
+                                    </div>
+                                </article>
+                            </div>
+
+                            <section class="heat" aria-label="Typical weekday rinses">
+                                <div class="heat-head">
+                                    <p>Typical weekday</p>
+                                    <p id="heat-peak"></p>
+                                </div>
+                                <div class="heat-grid" id="heat-grid" role="img" aria-label="Average rinses by half-hour"></div>
+                            </section>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="alert" aria-live="polite">Saved</div>
+
+    <div class="info-overlay" id="infoOverlay" role="dialog" aria-modal="true" aria-label="More information">
+        <div class="info-content" id="infoContent">
+            <p class="info-text">Find out more at</p>
+            <p class="info-website">instarinse.com</p>
+        </div>
+    </div>
+
+    <script src="scripts/heat.js?v=1793015776"></script>
+    <script src="scripts/app.js?v=1793015776"></script>
+</body>
+</html>

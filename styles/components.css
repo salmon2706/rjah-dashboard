@@ -1,0 +1,1024 @@
+/**
+ * Component Styles
+ * 
+ * UI Component definitions following Apple design patterns.
+ * Glass morphism, cards, navigation, and interactive elements.
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   App Layout
+   ============================================ */
+
+.app {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
+    background: transparent;
+}
+
+.dashboard-column {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background: transparent;
+}
+
+.dashboard-column > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ============================================
+   Cycle Notification Ring
+   ============================================ */
+
+.cycle-glow {
+    position: fixed;
+    top: -15px;
+    left: -15px;
+    right: -15px;
+    bottom: -15px;
+    pointer-events: none;
+    z-index: 9000;
+    opacity: 0;
+    transition: opacity 500ms ease-out;
+    border-radius: 111px;
+    overflow: hidden;
+}
+
+.cycle-glow-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 111px;
+    box-shadow: 
+        inset 0 0 15px 8px rgba(52, 199, 89, 0.9),
+        inset 0 0 25px 12px rgba(52, 199, 89, 0.6);
+}
+
+.cycle-glow.active {
+    opacity: 1;
+}
+
+.cycle-glow.fade-out {
+    opacity: 0;
+    transition: opacity 1000ms ease-out;
+}
+
+
+/* ============================================
+   Navigation Bar
+   ============================================ */
+
+.navbar {
+    position: relative;
+    display: grid;
+    grid-template-columns: 320px 1fr 320px;
+    align-items: center;
+    gap: var(--space-xxl);
+    padding: var(--space-md) var(--space-xxl) 12px var(--space-xxl);
+    background: transparent;
+    z-index: 200;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.greeting {
+    font-size: var(--font-size-4xl);
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.65);
+    letter-spacing: -0.015em;
+    line-height: var(--line-height-snug);
+    position: relative;
+    left: 20px;
+    top: 10px;
+}
+
+.greeting-name {
+    color: #000;
+}
+
+
+/* ============================================
+   Brand Logo
+   ============================================ */
+
+.brand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 12px;
+    padding: 25px 28px 31px 28px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: var(--blur-sm) saturate(180%);
+    -webkit-backdrop-filter: var(--blur-sm) saturate(180%);
+    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    box-shadow: 
+        0 4px 20px rgba(31, 38, 135, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+    width: fit-content;
+    z-index: 300;
+    cursor: pointer;
+}
+
+.brand-logo {
+    height: 42px;
+    width: auto;
+    display: block;
+    position: relative;
+    top: 5px;
+    object-fit: contain;
+}
+
+
+/* ============================================
+   Navigation Actions
+   ============================================ */
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.location-label {
+    font-size: 12px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wider);
+    margin-bottom: var(--space-xs);
+}
+
+.location-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.nav-time {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    line-height: var(--line-height-tight);
+}
+
+.nav-date {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.01em;
+    margin-top: 2px;
+}
+
+.nav-datetime {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 140px;
+}
+
+.nav-greeting {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav-brand {
+    position: relative;
+}
+
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+
+.main {
+    overflow: hidden;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    display: flex;
+    opacity: 1;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.main-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 0;
+}
+
+
+/* ============================================
+   Device Section (Left Panel)
+   ============================================ */
+
+.device-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg) var(--space-xl) var(--space-xl) var(--space-xl);
+    width: 420px;
+    flex-shrink: 0;
+    justify-content: flex-start;
+}
+
+
+/* ============================================
+   Product Showcase
+   ============================================ */
+
+.product-showcase {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin-top: -20px;
+}
+
+.product-image-container {
+    width: 100%;
+    max-width: 336px;
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 1;
+    -webkit-mask-image: radial-gradient(ellipse 80% 75% at center, 
+        black 30%, 
+        rgba(0, 0, 0, 0.8) 50%, 
+        rgba(0, 0, 0, 0.3) 70%,
+        transparent 95%);
+    mask-image: radial-gradient(ellipse 80% 75% at center, 
+        black 30%, 
+        rgba(0, 0, 0, 0.8) 50%, 
+        rgba(0, 0, 0, 0.3) 70%,
+        transparent 95%);
+}
+
+.product-status-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+
+/* ============================================
+   Device Stats
+   ============================================ */
+
+.instarinse-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -60px;
+    margin-bottom: 20px;
+    padding: 0;
+    position: relative;
+    z-index: 20;
+}
+
+.instarinse-logo {
+    height: 56px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+.device-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 0;
+    padding: 0 var(--space-lg);
+}
+
+.device-stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+}
+
+.device-stat-label {
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+.device-stat-value {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+
+/* ============================================
+   Metrics Section (Right Panel)
+   ============================================ */
+
+.metrics-section {
+    flex: 1;
+    padding: 32px var(--space-xl) var(--space-xl) 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.metrics-header {
+    text-align: left;
+    padding: 0 20px;
+    margin-bottom: 8px;
+}
+
+.metrics-header h1 {
+    display: none;
+}
+
+.metrics-header p {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-loose);
+    margin: 0;
+    max-width: 900px;
+    position: relative;
+    top: 10px;
+}
+
+
+/* ============================================
+   Metrics Grid
+   ============================================ */
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: var(--space-md);
+    flex: 1;
+    min-height: 0;
+    padding: 20px 0;
+}
+
+
+/* ============================================
+   Metric Cards
+   ============================================ */
+
+.metric-card {
+    position: relative;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: var(--blur-md) saturate(180%);
+    -webkit-backdrop-filter: var(--blur-md) saturate(180%);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-xl);
+    padding: 20px var(--space-lg);
+    box-shadow: var(--shadow-card),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9),
+        inset 0 -1px 0 0 rgba(0, 0, 0, 0.02);
+    overflow: visible;
+    transition: all var(--transition-slow);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.metric-card.flipped {
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.45) 100%);
+}
+
+.metric-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Glass highlight effect */
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--color-accent), 
+        var(--color-accent-secondary), 
+        var(--color-accent-tertiary));
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+}
+
+/* Border gradient */
+.metric-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1.5px;
+    background: linear-gradient(165deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0.1) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Removed - using cleaner animations */
+
+/* Card content transitions */
+.metric-card .card-content {
+    opacity: 1;
+    transition: opacity var(--transition-normal);
+}
+
+.metric-card .card-content.fading {
+    opacity: 0;
+}
+
+
+/* ============================================
+   Metric Labels & Values
+   ============================================ */
+
+.metric-label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.metric-value {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    margin-bottom: 10px;
+}
+
+
+
+/* ============================================
+   Cycle Badge
+   ============================================ */
+
+.cycle-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    padding: var(--space-xs) 10px;
+    background: linear-gradient(135deg, var(--color-success), var(--color-success-secondary));
+    color: white;
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4);
+    opacity: 0;
+    transform: scale(0.8) translateY(-4px);
+    transition: all var(--transition-bounce);
+}
+
+.cycle-badge.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+
+/* ============================================
+   Info Overlay
+   ============================================ */
+
+.info-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease-in-out;
+}
+
+.info-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    cursor: pointer;
+}
+
+.info-text {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-normal);
+    color: #86868b;
+    letter-spacing: -0.01em;
+    line-height: var(--line-height-tight);
+}
+
+.info-website {
+    font-size: var(--font-size-6xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.0;
+    margin-top: -10px;
+}
+
+
+/* ============================================
+   Toast Notification
+   ============================================ */
+
+.toast {
+    position: fixed;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--glass-background);
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+    padding: var(--space-md) var(--space-xl);
+    border-radius: 100px;
+    font-size: 16px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    box-shadow: var(--shadow-float);
+    border: 1.5px solid var(--glass-border);
+    opacity: 0;
+    transition: all var(--transition-slow);
+    z-index: 400;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+
+/* ============================================
+   Alternating Cards Transition
+   ============================================ */
+
+.metric-card.alternating {
+    transition: opacity 300ms ease-out, filter 300ms ease-out, transform 300ms ease-out;
+}
+
+.metric-card.alternating.transitioning {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(4px);
+    transition: all 300ms ease-out;
+}
+
+
+/* ============================================
+   Hero Section (Cups Counter + Ring)
+   ============================================ */
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-xl);
+    padding: 48px var(--space-xxl);
+    margin-top: 20px;
+    background: linear-gradient(165deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.3) 100%);
+    backdrop-filter: var(--blur-md) saturate(180%);
+    -webkit-backdrop-filter: var(--blur-md) saturate(180%);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 220px;
+}
+
+/* Loading state */
+.hero-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(52, 199, 89, 0.2);
+    border-top-color: #34c759;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+.hero-counter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.hero-label {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.02em;
+}
+
+.hero-label-accent {
+    color: #34c759;
+}
+
+.hero-value-container {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-value {
+    font-size: 110px;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: -0.04em;
+    color: var(--color-text-primary);
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+/* Elastic Fade - Apple-like subtle animation */
+.hero-value.elastic-fade {
+    animation: elasticFade 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes elasticFade {
+    0% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.025);
+        opacity: 0.85;
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hero-label-accent.saved-glow {
+    animation: savedGlow 450ms ease-out;
+}
+
+@keyframes savedGlow {
+    0% { 
+        color: #34c759;
+        filter: brightness(1);
+    }
+    50% { 
+        color: #34c759;
+        filter: brightness(1.3);
+    }
+    100% { 
+        color: #34c759;
+        filter: brightness(1);
+    }
+}
+
+.hero-since {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-tertiary);
+    margin-top: 8px;
+}
+
+.plus-one-badge {
+    position: absolute;
+    top: -10px;
+    right: -30px;
+    background: #34c759;
+    color: white;
+    font-size: 20px;
+    font-weight: var(--font-weight-bold);
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4);
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+    transition: all 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.plus-one-badge.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.plus-one-badge.hide {
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+    transition: all 400ms ease-out;
+}
+
+/* Savings badges */
+.metric-value-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.savings-badge {
+    position: absolute;
+    top: -5px;
+    right: -40px;
+    background: #34c759;
+    color: white;
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+    padding: 4px 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.4);
+    opacity: 0;
+    transform: scale(0.5) translateY(10px);
+    transition: all 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+}
+
+.savings-badge.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.savings-badge.hide {
+    opacity: 0;
+    transform: scale(0.8) translateY(-10px);
+    transition: all 400ms ease-out;
+}
+
+
+/* ============================================
+   Milestone Ring
+   ============================================ */
+
+.hero-bridge {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    max-width: 200px;
+}
+
+.hero-title {
+    font-size: 22px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-align: right;
+    line-height: 1.2;
+    margin: 0;
+    background: linear-gradient(135deg, #007aff 0%, #34c759 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-milestone {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.milestone-ring-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+
+.milestone-ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ring-bg {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.1);
+    stroke-width: 14;
+}
+
+.ring-progress {
+    fill: none;
+    stroke: url(#ringGradient);
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-dasharray: 326.73;
+    transition: stroke-dashoffset 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
+    stroke-dashoffset: 326.73;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 0 8px rgba(0, 122, 255, 0.3));
+}
+
+.milestone-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.milestone-title {
+    font-size: 11px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.milestone-percent {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+
+/* ============================================
+   Comparison Grid
+   ============================================ */
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.comparison-grid .metric-card {
+    padding: var(--space-lg) var(--space-xl);
+    min-height: 180px;
+}
+
+.comparison-grid .metric-value {
+    font-size: 52px;
+    margin-bottom: 0;
+    margin-top: 12px;
+}
+
+
+
+/* ============================================
+   Comparison "vs HANDWASH" Header
+   ============================================ */
+
+.comparison-vs {
+    font-size: 24px;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+
+.comparison-vs span {
+    font-weight: var(--font-weight-bold);
+}
+
+.percent-label {
+    font-size: 18px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    display: block;
+}
+
+
+/* ============================================
+   Equivalents Section
+   ============================================ */
+
+/* ============================================
+   Card Equivalents (inside comparison cards)
+   ============================================ */
+
+.card-equivalent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    transition: opacity 1s ease-in-out, filter 1s ease-in-out;
+}
+
+.metric-card.alternating.transitioning .card-equivalent {
+    opacity: 0;
+    transform: translateY(5px);
+}
+
+.equiv-equals {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    line-height: 1;
+}
+
+.equiv-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.equiv-value {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: 1;
+}
+
+.equiv-label {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+}
+
+
+/* ============================================
+   Highlight Text (for alternating labels)
+   ============================================ */
+
+.highlight-text {
+    color: #ff9f0a;
+    font-weight: var(--font-weight-bold);
+}

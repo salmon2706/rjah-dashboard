@@ -1,0 +1,261 @@
+/**
+ * Main Stylesheet
+ * 
+ * Design Tokens, Reset, and Base Styles
+ * Following Apple Human Interface Guidelines
+ * 
+ * @version 1.0.0
+ */
+
+/* ============================================
+   Design Tokens - CSS Custom Properties
+   ============================================ */
+
+:root {
+    /* Background Gradient Colors */
+    --color-gradient-1: #84d0f5;
+    --color-gradient-2: #fdc42a;
+    --color-gradient-3: #f39200;
+    --color-gradient-4: #e4022b;
+    --color-gradient-5: #ae2146;
+    
+    /* Glass Morphism */
+    --glass-background: rgba(255, 255, 255, 0.4);
+    --glass-background-elevated: rgba(255, 255, 255, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-shadow: rgba(31, 38, 135, 0.12);
+    
+    /* Typography */
+    --color-text-primary: #1d1d1f;
+    --color-text-secondary: #6e6e73;
+    --color-text-tertiary: #b0b0b5;
+    
+    /* Accent Colors */
+    --color-accent: #007aff;
+    --color-accent-secondary: #00d4ff;
+    --color-accent-tertiary: #a855f7;
+    --color-highlight: #ff9f0a;
+    
+    /* Semantic Colors */
+    --color-success: #34c759;
+    --color-success-secondary: #30d158;
+    --color-warning: #ff9500;
+    --color-error: #ff3b30;
+    
+    /* Blur Values */
+    --blur-sm: blur(30px);
+    --blur-md: blur(50px);
+    --blur-lg: blur(80px);
+    
+    /* Shadows */
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    --shadow-float: 0 12px 48px 0 rgba(31, 38, 135, 0.1);
+    --shadow-card: 
+        0 8px 32px rgba(31, 38, 135, 0.12),
+        0 2px 8px rgba(0, 0, 0, 0.06);
+    
+    /* Border Radius */
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 24px;
+    --radius-xl: 28px;
+    
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-xxl: 40px;
+    
+    /* Typography Scale */
+    --font-size-xs: 10px;
+    --font-size-sm: 13px;
+    --font-size-base: 17px;
+    --font-size-lg: 18px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 28px;
+    --font-size-3xl: 38px;
+    --font-size-4xl: 42px;
+    --font-size-5xl: 52px;
+    --font-size-6xl: 56px;
+    
+    /* Font Weights */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    
+    /* Line Heights */
+    --line-height-tight: 1.1;
+    --line-height-snug: 1.25;
+    --line-height-normal: 1.47059;
+    --line-height-relaxed: 1.5;
+    --line-height-loose: 1.6;
+    
+    /* Letter Spacing */
+    --letter-spacing-tight: -0.04em;
+    --letter-spacing-snug: -0.03em;
+    --letter-spacing-normal: -0.022em;
+    --letter-spacing-wide: 0.06em;
+    --letter-spacing-wider: 0.08em;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+/* ============================================
+   Reset & Base Styles
+   ============================================ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-normal);
+    letter-spacing: var(--letter-spacing-normal);
+    color: var(--color-text-primary);
+    background: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ============================================
+   Background Gradient Effect
+   ============================================ */
+
+body::before {
+    content: '';
+    position: fixed;
+    right: -30%;
+    top: -15%;
+    width: 140%;
+    height: 130%;
+    background: 
+        radial-gradient(circle at 95% 8%, var(--color-gradient-1) 0%, transparent 20%),
+        radial-gradient(circle at 88% 15%, var(--color-gradient-2) 0%, transparent 18%),
+        radial-gradient(circle at 96% 25%, var(--color-gradient-3) 0%, transparent 16%),
+        radial-gradient(circle at 92% 35%, var(--color-gradient-4) 0%, transparent 15%),
+        radial-gradient(circle at 85% 45%, var(--color-gradient-1) 0%, transparent 19%),
+        radial-gradient(circle at 94% 55%, var(--color-gradient-3) 0%, transparent 16%),
+        radial-gradient(circle at 88% 65%, var(--color-gradient-2) 0%, transparent 18%),
+        radial-gradient(circle at 96% 75%, var(--color-gradient-5) 0%, transparent 17%),
+        radial-gradient(circle at 90% 85%, var(--color-gradient-4) 0%, transparent 16%),
+        radial-gradient(circle at 85% 92%, var(--color-gradient-3) 0%, transparent 15%);
+    opacity: 0.85;
+    filter: blur(40px);
+    z-index: 0;
+    pointer-events: none;
+    animation: bubbleFloat 30s ease-in-out infinite;
+}
+
+
+/* ============================================
+   Screen Corner Decorations (Rounded Display)
+   ============================================ */
+
+.screen-corner {
+    position: fixed;
+    width: 96px;
+    height: 96px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.screen-corner.top-left {
+    top: 0;
+    left: 0;
+}
+
+.screen-corner.top-right {
+    top: 0;
+    right: 0;
+}
+
+.screen-corner.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.screen-corner.bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.highlight-text {
+    color: var(--color-highlight);
+}
+
+
+/* ============================================
+   Metric Value Units
+   ============================================ */
+
+.metric-unit {
+    font-size: 22px;
+    font-weight: var(--font-weight-semibold);
+    margin-left: var(--space-xs);
+}
+
+
+/* ============================================
+   Assumption Card Content
+   ============================================ */
+
+.assumption-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    justify-content: center;
+    height: 100%;
+}
+
+.assumption-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-spacing-wide);
+}
+
+.assumption-text {
+    font-size: 14px;
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
