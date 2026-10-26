@@ -1,12 +1,7 @@
 /* 65" iiyama portrait, iiSignage² webpage widget. 9:16 (1080×1920 CSS or 2160×3840). */
-html.is-tv .screen-corner {
-    display: none;
-}
-
+html.is-tv .screen-corner { display: none; }
 html.is-tv .cycle-glow,
-html.is-tv .cycle-glow-inner {
-    border-radius: 0;
-}
+html.is-tv .cycle-glow-inner { border-radius: 0; }
 
 html.is-tv body::before {
     right: -40%;
@@ -17,11 +12,15 @@ html.is-tv body::before {
 
 html.is-tv .navbar {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     height: auto;
-    gap: 1.5vw;
-    padding: 1.8vh 3.2vw 0.6vh;
+    gap: 0;
+    padding: 1.2vh 2.2vw 0.2vh;
+}
+
+html.is-tv .nav-brand {
+    display: none;
 }
 
 html.is-tv .greeting {
@@ -31,9 +30,12 @@ html.is-tv .greeting {
 }
 
 html.is-tv .brand {
-    position: static;
-    transform: none;
-    padding: 1vh 2.2vw 1.3vh;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.5vh 2.6vw 1.7vh;
+    border-radius: 0 0 1.8vw 1.8vw;
     cursor: default;
 }
 
@@ -175,11 +177,6 @@ html.is-tv .milestone-ring-container {
 
 html.is-tv .milestone-percent {
     font-size: 3.4vw;
-}
-
-html.is-tv .plus-one-badge {
-    font-size: 2vw;
-    right: -2vw;
 }
 
 html.is-tv .comparison-grid {
