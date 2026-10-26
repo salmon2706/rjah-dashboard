@@ -25,7 +25,7 @@ The live listener only accepts the current serial (`LKK-5925`). The on-screen ro
 
    Without that slash the CMS loads the HTML and then looks for the styles at the wrong path. You get four black quarter-circles on white. That is the tablet corner marks with no CSS.
 3. Right-click the widget, **Fill up**, so it covers the screen.
-4. Leave force refresh off. The page already listens live on Firebase; a refresh would blank it.
+4. Leave force refresh off. The CMS only goes to 180 seconds, which would blink the board. Cup counts stay live on Firebase. A layout change you push from home is checked every 10 minutes; the TV reloads only when a new version is up.
 5. Back button off. No entrance animation. No cookie or login on this URL.
 6. Publish to the 65-inch. The display needs internet (GitHub Pages and Firebase).
 
