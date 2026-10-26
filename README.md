@@ -19,10 +19,14 @@ The live listener only accepts the current serial (`LKK-5925`). The on-screen ro
 65-inch professional signage, native 3840×2160, mounted portrait so the page is 2160×3840. The CMS is iiSignage² at iiyama-cms.com.
 
 1. New programme in **portrait**.
-2. Add a **Web Page** widget, URL `https://salmon2706.github.io/rjah-dashboard/`.
+2. Add a **Web Page** widget. Paste this URL exactly, including the last slash:
+
+   `https://salmon2706.github.io/rjah-dashboard/`
+
+   Without that slash the CMS loads the HTML and then looks for the styles at the wrong path. You get four black quarter-circles on white. That is the tablet corner marks with no CSS.
 3. Right-click the widget, **Fill up**, so it covers the screen.
 4. Leave force refresh off. The page already listens live on Firebase; a refresh would blank it.
-5. No entrance animation, no back button, no cookie or login on this URL.
+5. Back button off. No entrance animation. No cookie or login on this URL.
 6. Publish to the 65-inch. The display needs internet (GitHub Pages and Firebase).
 
 To preview the TV stack on a laptop, open the URL with `?tv=1`.
