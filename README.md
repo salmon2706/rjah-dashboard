@@ -1,6 +1,6 @@
-# RJAH tablet dashboard
+# RJAH Gobowen dashboard
 
-Kiosk for The Robert Jones and Agnes Hunt Orthopaedic Hospital, Gobowen. Same layout as the Goodwood (Rolls-Royce) tablet, with the office RedChair weekday heat map.
+Live board for The Robert Jones and Agnes Hunt Orthopaedic Hospital, Gobowen. Portrait 9:16 for their 65-inch iiyama with iiSignage². Landscape still uses the Goodwood tablet layout.
 
 Live: https://salmon2706.github.io/rjah-dashboard/
 
@@ -14,7 +14,18 @@ Cups are daily counter deltas from 26th October 2026. A board that arrives with 
 
 The live listener only accepts the current serial (`LKK-5925`). The on-screen road is 100 cups. The strip under the savings cards is the typical weekday heat map, 7am to 5:30pm, same half-hour bins as the office RedChair tablet.
 
-On the tablet: Safari, the live URL, Add to Home Screen, landscape. Same Wi-Fi with internet.
+## iiyama TV (iiSignage²)
+
+65-inch professional signage, native 3840×2160, mounted portrait so the page is 2160×3840. The CMS is iiSignage² at iiyama-cms.com.
+
+1. New programme in **portrait**.
+2. Add a **Web Page** widget, URL `https://salmon2706.github.io/rjah-dashboard/`.
+3. Right-click the widget, **Fill up**, so it covers the screen.
+4. Leave force refresh off. The page already listens live on Firebase; a refresh would blank it.
+5. No entrance animation, no back button, no cookie or login on this URL.
+6. Publish to the 65-inch. The display needs internet (GitHub Pages and Firebase).
+
+To preview the TV stack on a laptop, open the URL with `?tv=1`.
 
 ## Deploy
 

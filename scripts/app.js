@@ -204,6 +204,7 @@ class DashboardUI {
         const dashboard = document.querySelector('.dashboard-column');
         if (dashboard) {
             dashboard.addEventListener('click', (e) => {
+                if (document.documentElement.classList.contains('is-tv')) return;
                 if (e.target.closest('.comparison-grid')) return;
                 if (e.target.closest('.heat')) return;
                 if (e.target.closest('.info-overlay')) return;
