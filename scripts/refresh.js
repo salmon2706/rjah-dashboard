@@ -3,6 +3,8 @@
     var match = link && link.getAttribute('href').match(/[?&]v=(\d+)/);
     if (!match) return;
     var token = match[1];
+    var label = document.getElementById('app-version');
+    if (label) label.textContent = 'v' + token.slice(-6);
 
     setInterval(function () {
         fetch('index.html?t=' + Date.now(), { cache: 'no-store' })

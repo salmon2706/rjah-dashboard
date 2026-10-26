@@ -9,7 +9,11 @@
 
     <title>RJAH Gobowen - impactOS</title>
     <base href="https://salmon2706.github.io/rjah-dashboard/">
-    <style>.screen-corner{display:none}</style>
+    <style>
+        .screen-corner{display:none}
+        .app-version{position:fixed;right:12px;bottom:8px;z-index:20;margin:0;font-size:10px;font-weight:500;letter-spacing:.04em;color:rgba(0,0,0,.28);pointer-events:none}
+        html.is-tv .app-version{right:1.4vw;bottom:.8vh;font-size:1.05vw}
+    </style>
     <script>
         (function () {
             function applyTv() {
@@ -26,11 +30,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles/main.css?v=1793025220">
-    <link rel="stylesheet" href="styles/components.css?v=1793025220">
-    <link rel="stylesheet" href="styles/animations.css?v=1793025220">
-    <link rel="stylesheet" href="styles/heat.css?v=1793025220">
-    <link rel="stylesheet" href="styles/tv.css?v=1793025220">
+    <link rel="stylesheet" href="styles/main.css?v=1793025364">
+    <link rel="stylesheet" href="styles/components.css?v=1793025364">
+    <link rel="stylesheet" href="styles/animations.css?v=1793025364">
+    <link rel="stylesheet" href="styles/heat.css?v=1793025364">
+    <link rel="stylesheet" href="styles/tv.css?v=1793025364">
 
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
@@ -214,6 +218,8 @@
         </div>
     </div>
 
+    <p class="app-version" id="app-version" aria-hidden="true"></p>
+
     <div class="toast" id="toast" role="alert" aria-live="polite">Saved</div>
 
     <div class="info-overlay" id="infoOverlay" role="dialog" aria-modal="true" aria-label="More information">
@@ -223,8 +229,8 @@
         </div>
     </div>
 
-    <script src="scripts/heat.js?v=1793025220"></script>
-    <script src="scripts/app.js?v=1793025220"></script>
-    <script src="scripts/refresh.js?v=1793025220"></script>
+    <script src="scripts/heat.js?v=1793025364"></script>
+    <script src="scripts/app.js?v=1793025364"></script>
+    <script src="scripts/refresh.js?v=1793025364"></script>
 </body>
 </html>

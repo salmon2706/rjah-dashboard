@@ -29,7 +29,7 @@ The live listener only accepts the current serial (`LKK-5925`). The on-screen ro
 5. Back button off. No entrance animation. No cookie or login on this URL.
 6. Publish to the 65-inch. The display needs internet (GitHub Pages and Firebase).
 
-To preview the TV stack on a laptop, open the URL with `?tv=1`.
+To preview the TV stack on a laptop, open the URL with `?tv=1`. The tiny `v` mark bottom-right is the last six digits of the cache token, so you can see whether the TV has the latest push.
 
 ## Deploy
 
