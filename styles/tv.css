@@ -1,5 +1,4 @@
 /* 65" iiyama portrait, iiSignage² webpage widget. 9:16 (1080×1920 CSS or 2160×3840). */
-
 html.is-tv .screen-corner {
     display: none;
 }
