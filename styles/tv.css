@@ -59,6 +59,13 @@ html.is-tv .nav-date {
     font-size: 1.4vw;
 }
 
+html.is-tv .main,
+html.is-tv .container,
+html.is-tv .main-layout {
+    flex: 1;
+    min-height: 0;
+}
+
 html.is-tv .main-layout {
     flex-direction: column;
 }
@@ -77,11 +84,11 @@ html.is-tv .product-showcase {
 }
 
 html.is-tv .product-image-container {
-    max-width: 38vw;
+    max-width: 46vw;
 }
 
 html.is-tv .product-image {
-    max-height: 20vh;
+    max-height: 24vh;
     width: auto;
     margin: 0 auto;
     display: block;
@@ -114,8 +121,8 @@ html.is-tv .device-stat-item {
 html.is-tv .metrics-section {
     flex: 1;
     min-height: 0;
-    padding: 0.4vh 3.2vw 2.2vh;
-    gap: 1.2vh;
+    padding: 0.6vh 2.6vw 1.6vh;
+    gap: 1.6vh;
 }
 
 html.is-tv .metrics-header {
@@ -131,14 +138,16 @@ html.is-tv .metrics-header p {
 }
 
 html.is-tv .hero-section {
+    flex: 1.2 1 auto;
+    align-items: center;
     gap: 2vw;
-    padding: 2.2vh 3vw;
+    padding: 3vh 3vw;
     margin-top: 0;
     min-height: 0;
 }
 
 html.is-tv .hero-value {
-    font-size: 12.5vw;
+    font-size: 16vw;
 }
 
 html.is-tv .hero-label {
@@ -161,8 +170,8 @@ html.is-tv .hero-bridge {
 }
 
 html.is-tv .milestone-ring-container {
-    width: 14vw;
-    height: 14vw;
+    width: 18vw;
+    height: 18vw;
 }
 
 html.is-tv .milestone-percent {
@@ -174,10 +183,15 @@ html.is-tv .plus-one-badge {
     right: -2vw;
 }
 
+html.is-tv .comparison-grid {
+    flex: 1 1 auto;
+}
+
 html.is-tv .comparison-grid .metric-card {
     min-height: 0;
-    padding: 1.8vh 2.2vw;
+    padding: 2.4vh 2.4vw;
     cursor: default;
+    justify-content: center;
 }
 
 html.is-tv .comparison-vs {
@@ -204,8 +218,11 @@ html.is-tv .equiv-label {
 
 html.is-tv .heat {
     margin-top: 0;
-    padding: 1.4vh 2vw 1.2vh;
-    flex: 1 1 auto;
+    padding: 1.8vh 2vw 1.6vh;
+    flex: 1.4 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
 html.is-tv .heat-head p:first-child {
@@ -217,12 +234,15 @@ html.is-tv #heat-peak {
 }
 
 html.is-tv .heat-grid {
-    grid-template-rows: 5.2vh auto;
-    gap: 0.35vw;
+    flex: 1;
+    min-height: 0;
+    grid-template-rows: 1fr auto;
+    gap: 0.4vw;
 }
 
 html.is-tv .heat-cell {
-    height: 5.2vh;
+    height: 100%;
+    min-height: 8vh;
 }
 
 html.is-tv .heat-hour {
